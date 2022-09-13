@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{79BE6C49-4BA3-4562-8447-7EA3BBB53F2D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AbilitiesExtended</RootNamespace>
+    <AssemblyName>AbilitiesExtended</AssemblyName>
+    <TargetFramework>net472</TargetFramework>
+    <FileAlignment>512</FileAlignment>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+  </PropertyGroup>
+	<ItemGroup>
+		<Publicize Include="AbilitiesExtended:PawnFlyer" />
+		<Publicize Include="Assembly-CSharp:Verse.PawnRenderer.effecters" />
+		<Publicize Include="Assembly-CSharp:Verse.PawnStatusEffecters.pairs" />
+		<Publicize Include="Assembly-CSharp:Verse.PawnStatusEffecters+LiveEffecter" />
+	</ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="ExtentionMethods\**" />
+    <EmbeddedResource Remove="Harmony\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="ExtentionMethods\**" />
+    <None Remove="Harmony\**" />
+    <None Remove="Properties\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbilityEffectDest.cs" />
+    <Compile Include="AbilityPawnFlyer.cs" />
+    <Compile Include="AbilityTracker_Extentions.cs" />
+    <Compile Include="AE_NeurotrainerDefGenerator_ImpliedThingDefs_Filter_Patch.cs" />
+    <Compile Include="AE_Pawn_ApparelTracker_Notify_ApparelModified_CompAbilityItem_Patch.cs" />
+    <Compile Include="AE_Pawn_EquipmentTracker_Notify_EquipmentModified_CompAbilityItem_Patch.cs" />
+    <Compile Include="AE_Verb_get_EquipmentSource_Verb_UseEquipment_Patch.cs" />
+    <Compile Include="Command_EquipmentPsycast.cs" />
+    <Compile Include="CompAbilityEffect_Dash.cs" />
+    <Compile Include="CompAbilityEffect_PatternSpawn.cs" />
+    <Compile Include="CompProperties_AbilityDash.cs" />
+    <Compile Include="CompProperties_AbilityPatternSpawn.cs" />
+    <Compile Include="DashingPawn.cs" />
+    <Compile Include="FastGetCompsExtensions.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="PawnStatus.cs" />
+    <Compile Include="PawnStatusTracker.cs" />
+    <Compile Include="VerbProperties_EquipmentAbility.cs" />
+    <Compile Include="Verb_EquipmentLaunchProjectile.cs" />
+    <Compile Include="Verb_UseEquipment_Thrown.cs" />
+    <Compile Include="Verb_UseEquipment.cs" />
+    <Compile Include="Verb_ShootEquipment.cs" />
+    <Compile Include="HediffComp_Ability.cs" />
+    <Compile Include="EquipmentAbilityDef.cs" />
+    <Compile Include="EquipmentAbility.cs" />
+    <Compile Include="CompAbilityItem.cs" />
+    <Compile Include="Command_EquipmentAbility.cs" />
+    <Compile Include="CompAbilityEffect_Shoot.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Krafs.Publicizer" Version="1.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\workshop\content\294100\2009463077\Current\Assemblies\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
